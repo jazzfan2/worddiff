@@ -71,6 +71,7 @@ sed -E "s/(([^ 	]+[ 	]+){$wordcount})/\1\n/g" |
 # De spatie in de '<span style=xxx>'-tag weer terugbrengen, en het resultaat wegschrijven naar een .html-file:
 sed 's/<span_style=/<span style=/g'    >| out.html
 
+
 #####################################################################################
 #
 # Copyright (C) 2025 Rob Toscani <rob_toscani@yahoo.com>
