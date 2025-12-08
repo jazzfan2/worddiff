@@ -16,7 +16,7 @@
 #
 #####################################################
 
-# Standaard aantal woorden tot regelafbreking (default geen regel-afbreking):
+# Standaard aantal woorden tot regelafbreking (default "geen" regel-afbreking):
 wordcount=30000
 
 options(){

@@ -137,7 +137,7 @@ helptext()
     while read "line"; do
         echo "$line" >&2         # print to standard error (stderr)
     done << EOF
-Usage: worddiff2.sh [-hw] textfile1 textfile2
+Usage: worddiff2.sh [-hw] directory1 directory2
 
 -h       Help (this output)
 -w NUM   Wrap lines after each series of NUM words instead of 10. NUM = 0 disables line-wrap.
@@ -224,7 +224,7 @@ list2="$(numberlist "$2")"
 checkrepeat "$list1" "1e map" "2e map"
 checkrepeat "$list2" "2e map" "1e map"
 
-# Stel vast wat de maximaal voorkomende waarde van <NUMBER> is in beide gesorteerde lijsten:
+# Stel vast wat de maximaal voorkomende waarde van <NUMMER> is in beide gesorteerde lijsten:
 max1=${list1/* /}
 max2=${list2/* /}
 (( max1 > max2 )) && max=$max1 || max=$max2
