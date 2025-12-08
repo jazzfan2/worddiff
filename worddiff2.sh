@@ -80,8 +80,8 @@
 #
 # Als <MAP1> overeenkomt met "oud", dan wordt deze dus als eerste opgegeven.
 #
-# Met optie -w (gevolgd door aantal woorden per regel) kan de regel-afbreking worden
-# beïnvloed.
+# Met optie -w (gevolgd door aantal woorden per regel) kan de regel-afbreking
+# in de te leveren output worden beïnvloed.
 #
 # Het programma werkt nu één-voor-één alle paren van tekstbestanden in genoemde
 # mappen af en genereert hieruit verschil-bestanden.
@@ -95,6 +95,7 @@
 # Indien het programma doublures en/of ontbrekende waarden van <NUMMER> tegenkomt,
 # geeft het daarvan waarschuwingen in de terminal, maar vervolgt wel zo goed
 # mogelijk zijn taak.
+#
 # Zodra het programma klaar is, geeft het hiervan een melding in dezelfde terminal.
 #
 # In elk van de resulterende .html-bestanden in de map './diff/' is:
