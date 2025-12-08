@@ -46,23 +46,23 @@
 # eventueel gevolgd door een vrij te kiezen gedeelte (dat onderling verschillend
 # mag zijn).
 #
-# Als b.v. in <MAP1> (b.v. genaamd "oud") de volgende bestanden zijn weggeschreven:
-# - "1_voorwoord.txt"
-# - "2_highlights.txt"
-# - "3_tips.txt"
+# Als b.v. in <MAP1> (b.v. genaamd 'oud') de volgende bestanden zijn weggeschreven:
+# - '1_voorwoord.txt'
+# - '2_highlights.txt'
+# - '3_tips.txt'
 #
-# En in <MAP2> (b.v. genaamd "nieuw") de volgende bestanden:
-# - "1_inleiding.txt"
-# - "2_highlights.txt"
-# - "3_tips&tricks.txt"
+# En in <MAP2> (b.v. genaamd 'nieuw') de volgende bestanden:
+# - '1_inleiding.txt'
+# - '2_highlights.txt'
+# - '3_tips&tricks.txt'
 #
 # Dan zal programma de tekstbestanden in <MAP1> met die in <MAP2> vergelijken
 # waarvan de naam met hetzelfde <NUMMER> begint.
 #
 # Dus hier:
-#    "1_voorwoord.txt"   met  "1_inleiding.txt"
-#    "2_highlights.txt"  met  "2_highlights.txt"
-#    "3_tips.txt"        met  "3_tips&tricks.txt"
+#    '1_voorwoord.txt'   met  '1_inleiding.txt'
+#    '2_highlights.txt'  met  '2_highlights.txt'
+#    '3_tips.txt'        met  '3_tips&tricks.txt'
 #
 # Let op:
 # - Het aantal genummerde bestanden in <MAP1> moet gelijk zijn aan dat in <MAP2>.
