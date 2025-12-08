@@ -65,14 +65,14 @@ ansifilter -H --encoding=utf8           |
 # Alle eventuele niet-utf-8 karakters eruit verwijderen:
 iconv -f utf-8 -t utf-8 -c              |
 
-# Tijdelijk de spatie verwijderen uit de '<span style=xxx>'-tag (in verband met regel-afbreking):
+# Tijdelijk spatie verwijderen uit '<span style=xxx>'-tag (in verband met regel-afbreking):
 sed 's/<span style=/<span_style=/g'     |
 
-# Alle regels afbreken bij de spatie of tab na elke serie woorden met aantal = 'wordcount'
+# Alle regels afbreken bij spatie of tab na elke serie woorden met aantal = 'wordcount'
 # (Dit doet ansifilter helaas niet zelf, ook niet met optie -w !):
 sed -E "s/(([^ 	]+[ 	]+){$wordcount})/\1\n/g" |
 
-# De spatie in de '<span style=xxx>'-tag weer terugbrengen, en het resultaat wegschrijven naar een .html-file:
+# Spatie in '<span style=xxx>'-tag weer terugbrengen, en resultaat wegschrijven naar .html-file:
 sed 's/<span_style=/<span style=/g'    >| out.html
 
 
