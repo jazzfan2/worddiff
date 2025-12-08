@@ -80,6 +80,9 @@
 #
 # Als <MAP1> overeenkomt met "oud", dan wordt deze dus als eerste opgegeven.
 #
+# Met optie -w (gevolgd door aantal woorden per regel) kan de regel-afbreking worden
+# beïnvloed.
+#
 # Het programma werkt nu één-voor-één alle paren van tekstbestanden in genoemde
 # mappen af en genereert hieruit verschil-bestanden.
 #
@@ -103,7 +106,8 @@
 # - Groene tekst: NIET aanwezig in het tekstbestand in <MAP1> ("oud");
 #                 WEL in het vergeleken tekstbestand in <MAP2> ("nieuw")
 #
-# Vanuit elk van deze html-bestanden kan b.v. geprint worden naar PDF.
+# Vanuit elk van deze html-bestanden kan b.v. geprint worden naar pdf.
+# Optie -p resulteert rechtstreeks in een (reeks) .pdf-bestand(en).
 #
 #
 #######################################################
