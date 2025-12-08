@@ -14,8 +14,8 @@ Color-marking is used for text fragments not common in both files AT THE INDICAT
 
 worddiff2.sh is similar to worddiff.sh, with following difference:
 - It acts on two DIRECTORIES of text files, by comparing each pair of corresponding text files common to both directories;
-- It creates a './diff/' directory containing diff-files, one for each pair of compared text files;
-- As an alternative for .html output, .pdf output is provided as an option.
+- It creates a './diff/' directory containing diff-files for each pair of compared text files;
+- As an alternative for .html output, it can also provide .pdf output as an option.
 
 # How to use worddiff.sh and worddiff.sh:
 Usage:
