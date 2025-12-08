@@ -19,7 +19,7 @@ worddiff2.sh is similar to worddiff.sh, but does MULTIPLE comparing, as follows:
 - It stores all resulting files into a difference-directory;
 - As an alternative for .html-output, it can also provide .pdf-output as an option.
 
-# How to use worddiff.sh and worddiff.sh:
+# How to use worddiff.sh and worddiff2.sh:
 Usage:
 
 	worddiff.sh   <text-file1> <text-file2>
