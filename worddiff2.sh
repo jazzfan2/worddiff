@@ -14,6 +14,7 @@
 # Vooraf moeten de volgende programma's op het systeem zijn geïnstalleerd:
 # - wdiff
 # - ansifilter
+# - wkhtmltopdf (indien optie -p gewenst is)
 # Zie ook:
 # https://unix.stackexchange.com/questions/25199/how-can-i-get-the-most-bang-for-my-buck-with-the-diff-command
 #
