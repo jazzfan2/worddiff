@@ -212,10 +212,10 @@ makediff()
     sed -E "s/(([^ 	]+[ 	]+){$wordcount})/\1\n/g" |
 
     # Spatie in '<span style=xxx>'-tag herstellen, en output wegschrijven naar gewenst formaat:
-    sed 's/<span_style=/<span style=/g'    | postprocess - $NUMMER
+    sed 's/<span_style=/<span style=/g'    | store2file - $NUMMER
 }
 
-postprocess()
+store2file()
 # Html-tekst wegschrijven naar (.html-)file, of (in geval van optie -p) omzetten naar pdf-file:
 {
     file="$1"
