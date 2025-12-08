@@ -92,9 +92,9 @@
 # Het <NUMMER> komt overeen met het <NUMMER> in de namen van de vergeleken
 # tekstbestanden.
 #
-# Indien het programma doublures en/of ontbrekende waarden van <NUMMER> tegenkomt,
-# geeft het daarvan waarschuwingen in de terminal, maar vervolgt wel zo goed
-# mogelijk zijn taak.
+# Indien het programma doublures en/of in één map ontbrekende waarden van <NUMMER>
+# tegenkomt, dan geeft het daarvan waarschuwingen in de terminal, maar vervolgt wel
+# zo goed mogelijk zijn taak.
 #
 # Zodra het programma klaar is, geeft het hiervan een melding in dezelfde terminal.
 #
