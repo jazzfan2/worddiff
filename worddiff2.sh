@@ -108,7 +108,7 @@
 #                 WEL in het vergeleken tekstbestand in <MAP2> ("nieuw")
 #
 # Vanuit elk van deze html-bestanden kan b.v. geprint worden naar pdf.
-# Optie -p resulteert rechtstreeks in een (reeks) .pdf-bestand(en).
+# Optie -p resulteert rechtstreeks in een (reeks) .pdf- i.p.v. .html-bestand(en).
 #
 #
 #######################################################
