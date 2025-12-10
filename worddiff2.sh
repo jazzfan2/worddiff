@@ -237,8 +237,8 @@ store2file()
 }
 
 
-# Main functie:
-# =============
+# De main-functie:
+# ================
 
 # Voer de opties uit:
 options $@
