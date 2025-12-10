@@ -4,12 +4,12 @@
 # Date: 8th December 2025
 # Description: This program is a wrapper-script around 'wdiff()'
 # (https://www.gnu.org/software/wdiff/)
-# It does a word-by-word comparison in color among each pair of equally 
+# It does a word-by-word comparison in color among each pair of equally
 # numbered flat-text files shared by the two given directories.
 # The results are stored to color-marked difference-files in html-, or
 # (optionally) pdf-format, and collected in the ./diff/ directory.
 #
-# Usage:     worddiff2.sh  [OPTION]... DIR1 DIR2 
+# Usage:     worddiff2.sh  [OPTION]... DIR1 DIR2
 #
 # Options:
 #   -h       Help (this output)
