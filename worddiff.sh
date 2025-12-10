@@ -1,11 +1,12 @@
 #!/bin/bash
 # Name: worddiff.sh
 # Author: Rob Toscani
-# Date: 08-12-2025
-# This program is a wrapper-script around 'wdiff()'
-# (https://www.gnu.org/software/wdiff/),
+# Date: 8th December 2025
+# Description: This program is a wrapper-script around 'wdiff()'
+# (https://www.gnu.org/software/wdiff/)
 # It does a word-by-word comparison in color between two given flat-text files,
-# The result is stored into a color-marked difference-file in .html format.
+# The result is stored into a color-marked difference-file in html-, or
+# (optionally) pdf-format.
 #
 # Usage:     worddiff.sh  [OPTION]... FILE1 FILE2 
 #

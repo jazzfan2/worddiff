@@ -1,21 +1,23 @@
 #!/bin/bash
-# Naam: worddiff2.sh
-# Bron: Rob Toscani
-# Datum: 08-12-2025
-# Dit programma doet een woord-voor-woord vergelijking in kleur tussen de
-# genummerde platte tekstbestanden in de 1ste opgegeven directory en die
-# in de 2de opgegeven directory.
-# Het is een wrapper-script rondom 'wdiff' (https://www.gnu.org/software/wdiff/),
-# met uitvoer naar html- of optioneel naar pdf-formaat.
-
-# Het nummer in de bestandsnaam bepaalt welke bestanden onderling worden
-# vergeleken. De resultaten worden weggeschreven naar kleur-gemarkeerde
-# verschil-bestanden in .html- of (optioneel) .pdf-formaat, verzameld in
-# directory ./diff/.
+# Name: worddiff2.sh
+# Author: Rob Toscani
+# Date: 8th December 2025
+# Description: This program is a wrapper-script around 'wdiff()'
+# (https://www.gnu.org/software/wdiff/)
+# It does a word-by-word comparison in color among each pair of equally 
+# numbered flat-text files shared by the two given directories.
+# The results are stored to color-marked difference-files in html-, or
+# (optionally) pdf-format, and collected in the ./diff/ directory.
 #
-# Vooraf moeten de volgende programma's op het systeem zijn geïnstalleerd:
+# Usage:     worddiff2.sh  [OPTION]... DIR1 DIR2 
+#
+# Options:
+#   -h       Help (this output)
+#   -p       Output as .pdf- instead of .html-files
+#
+# Prerequisites:
 # - wdiff
-# - wkhtmltopdf (indien optie -p gewenst is)
+# - wkhtmltopdf (if output to pdf is desired)
 #
 #####################################################################################
 #
@@ -36,15 +38,15 @@
 #
 ######################################################################################
 
-# Stel html als output-formaat in:
+# Standard output-format:
 format="html"
 
-# De kleurmarkeringen:
+# The color markings:
 delete_start="<span style=\"font-weight:bold;color:#ff0000;\">"
 insert_start="<span style=\"font-weight:bold;color:#00ff00;\">"
 end="</span>"
 
-# De html-tags die voor en achter de tekst worden geplakt:
+# The html-tags to be pasted above and underneath the text:
 html_intro="
 <!DOCTYPE html>
 <html>
@@ -76,8 +78,8 @@ html_coda="
 esc_html="s/</\&lt;/g; s/>/\&gt;/g" 
 
 
-# De functies:
-# ============
+# Functions:
+# ==========
 
 options(){
 # Specify options:
@@ -109,7 +111,7 @@ EOF
 }
 
 numberlist()
-# Een (horizontale) lijst printen van nummers waarmee de bestanden in de gegeven map beginnen:
+# Print a ('horizontal') list of the leading numbers in the file names in given directory:
 {
     ls "$1"           |
     grep -oE ^[0-9]+_ |
@@ -120,87 +122,87 @@ numberlist()
 }
 
 checkrepeat()
-# Eventuele herhalingen in een gesorteerde nummerlijst signaleren en hiervan een melding maken:
+# Detect any repetitions in a sorted number list, and issue a warning if found:
 {
     repeatnum="$(grep -oE "(\<[0-9]+\>) \1" <<< "$1")"
     if [[ -n "$repeatnum" ]]; then
         qty=$(wc -w <<< "$repeatnum")
         num=${repeatnum/ */}
-        echo "Waarschuwing: nummer $num KOMT $qty KEER voor in bestandsnamen in de $2."
-        echo "SLECHTS ÉÉN BESTAND met $num is vergeleken met een (MOGELIJK VERKEERD) bestand in de $3"
+        echo "Warning: number $num appears in $qty file-names in the $2."
+        echo "Only one file with $num was compared with a (possibly wrong) file in the $3"
     fi
 }
 
 makediff()
-# Alle genummerde tekstbestanden in <MAP1> met die in <MAP2> vergelijken en de output opslaan:
+# Compare all numbered text files in 1st directory with those in 2nd directory, and store output:
 {
-    NUMMER=$1
-    file1="$(ls $2/$NUMMER"_"* 2>/dev/null | head -n 1)"
-    file2="$(ls $3/$NUMMER"_"* 2>/dev/null | head -n 1)"
+    NUMBER=$1
+    file1="$(ls $2/$NUMBER"_"* 2>/dev/null | head -n 1)"
+    file2="$(ls $3/$NUMBER"_"* 2>/dev/null | head -n 1)"
 
-    # Niets doen als een nummer niet voorkomt, met waarschuwing als dat in 1 van de 2 directories is:
+    # Do nothing if a number is missing. and issue warning if appearing in one directory only:
     if ([[ -z "$file1" ]] || [[ -z "$file2" ]]); then
         if [[ -n "$file1" ]]; then
-            echo "Waarschuwing: nummer $NUMMER KOMT WEL voor in de 1e map, MAAR NIET in de 2e map."
+            echo "Warning: nummer $NUMBER appears in 1st directory only, not in 2nd directory."
         elif [[ -n "$file2" ]]; then
-            echo "Waarschuwing: nummer $NUMMER KOMT WEL voor in de 2e map, MAAR NIET in de 1e map."
+            echo "Warning: nummer $NUMBER appears in 2nd directory only, not in 1st directory."
         fi
         return
     fi
 
-    # De kleur-gemarkeerde difference-file maken:
+    # Generate the color-marked difference-file:
     wdiff -w "$delete_start" -x "$end" -y "$insert_start" -z "$end" \
               <(sed "$esc_html" "$file1") <(sed "$esc_html" "$file2") |
 
-    # En wegschrijven naar het gewenste formaat (default .html):
-    cat <(echo "$html_intro") - <(echo "$html_coda") | store2file - $NUMMER
+    # And save results in desired format (default .html):
+    cat <(echo "$html_intro") - <(echo "$html_coda") | store2file - $NUMBER
 }
 
 store2file()
-# Html-tekst wegschrijven naar (html-)file, of (in geval van optie -p) omzetten naar pdf-file:
+# Store html-text to (html-)file, or (if option -p is given) convert to pdf-file:
 {
     file="$1"
-    NUMMER="$2"
+    NUMBER="$2"
     if [[ $format == "html" ]]; then
-        cat "$file" >| ./diff/"$(date +"%Y%m%d_%H%M")_diff_$NUMMER.html"
+        cat "$file" >| ./diff/"$(date +"%Y%m%d_%H%M")_diff_$NUMBER.html"
     else
-        wkhtmltopdf "$file" ./diff/"$(date +"%Y%m%d_%H%M")_diff_$NUMMER.pdf" 2>/dev/null
+        wkhtmltopdf "$file" ./diff/"$(date +"%Y%m%d_%H%M")_diff_$NUMBER.pdf" 2>/dev/null
     fi
 }
 
 
-# De main-functie:
-# ================
+# Main function:
+# ==============
 
-# Voer de opties uit:
+# Execute the options:
 options $@
 shift $(( OPTIND - 1 ))
 
-# Check of de twee opgegeven mappen bestaan:
-([[ ! -d "$1" ]] || [[ ! -d "$2" ]]) && echo "Geef bestaande mappen op." && exit 1
+# Check if given directories exist:
+([[ ! -d "$1" ]] || [[ ! -d "$2" ]]) && echo "Specify existing directories." && exit 1
 
-# Maak de ./diff/-directory aan, tenzij deze al bestaat:
+# Create the ./diff/-directory, unless it already exists:
 [[ ! -d ./diff ]] && mkdir ./diff
 
-# Maak twee lijsten: een met alle waarden van <NUMMER> in <MAP1> en een met alle in <MAP2>:
+# Create a list with all <NUMBER> values for each if the two directories:
 list1="$(numberlist "$1")"
 list2="$(numberlist "$2")"
 
-# Check of de <NUMMER>-lijsten herhalingen bevatten en zo ja geef hiervan een melding:
-checkrepeat "$list1" "1e map" "2e map"
-checkrepeat "$list2" "2e map" "1e map"
+# Check if de <NUMBER>-lists contain repetitions, and if so issue a warning:
+checkrepeat "$list1" "1st directory" "2nd directory"
+checkrepeat "$list2" "2nd directory" "1st directory"
 
-# Stel vast wat de maximaal voorkomende waarde van <NUMMER> is in beide gesorteerde lijsten:
+# Determine the maximum <NUMBER> value appearing in any of the sorted lists:
 max1=${list1/* /}
 max2=${list2/* /}
 (( max1 > max2 )) && max=$max1 || max=$max2
 
-# Doorloop alle waarden van <NUMMER> en roep per waarde de functie makediff() aan:
-NUMMER=0
-while (( NUMMER <= max )); do
-    makediff $NUMMER "$1" "$2"
-    (( NUMMER += 1 ))
+# While incrementing to max <NUMBER> value, call makediff() function with value argument:
+NUMBER=0
+while (( NUMBER <= max )); do
+    makediff $NUMBER "$1" "$2"
+    (( NUMBER += 1 ))
 done
 
 # Afsluiting:
-echo "Klaar! - De verschilbestanden zijn verzameld in $(pwd)/diff/"
+echo "Ready! - Please find all difference-files in $(pwd)/diff/"
