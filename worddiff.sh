@@ -9,7 +9,7 @@
 #
 # Benodigde vooraf geïnstalleerde programma's:
 # - wdiff
-# - wkhtmltopdf (in geval dat output naar pdf-formaat gewenst is)
+# - wkhtmltopdf (indien output naar pdf-formaat gewenst is)
 #
 ################################################################################
 
