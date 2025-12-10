@@ -5,11 +5,11 @@
 # Dit programma doet een woord-voor-woord vergelijking in kleur tussen de twee
 # opgegeven platte tekstbestanden.
 # Het is een wrapper-script rondom 'wdiff' (https://www.gnu.org/software/wdiff/),
-# met uitvoer naar html of optioneel naar pdf.
+# met uitvoer naar html- of optioneel naar pdf-formaat.
 #
 # Benodigde vooraf geïnstalleerde programma's:
 # - wdiff
-# - wkhtmltopdf (indien output naar pdf-formaat gewenst is)
+# - wkhtmltopdf (indien output naar pdf gewenst is)
 #
 ################################################################################
 
