@@ -115,7 +115,7 @@ delete_start="<span style=\"font-weight:bold;color:#ff0000;\">"
 insert_start="<span style=\"font-weight:bold;color:#00ff00;\">"
 end="</span>"
 
-# Escape < and > in case literal html-tags appear in the text:
+# Escape < and > to prevent interpretation as html-syntax (tags):
 esc_html="s/</\&lt;/g; s/>/\&gt;/g" 
 
 # Generate the color-marked difference-file:

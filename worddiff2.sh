@@ -41,40 +41,18 @@
 # Standard output-format:
 format="html"
 
-# The color markings:
-delete_start="<span style=\"font-weight:bold;color:#ff0000;\">"
-insert_start="<span style=\"font-weight:bold;color:#00ff00;\">"
-end="</span>"
-
-# The html-tags to be pasted above and underneath the text:
-html_intro="
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset=\"utf8\">
-<style type=\"text/css\">
-pre {
-  font-family:Courier New;
-  font-size:12pt;
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  white-space: -webkit-pre-wrap;
-  word-wrap: break-word;
-}
-</style>
-<title>$2</title>
-</head>
-<body>
-<pre>"
-
+# The html-tags to be pasted underneath the text:
 html_coda="
 </pre>
 </body>
 </html>"
 
-# Escape < and > in case literal html-tags appear in the text:
+# The color markings:
+delete_start="<span style=\"font-weight:bold;color:#ff0000;\">"
+insert_start="<span style=\"font-weight:bold;color:#00ff00;\">"
+end="</span>"
+
+# Escape < and > to prevent interpretation as html-syntax (tags):
 esc_html="s/</\&lt;/g; s/>/\&gt;/g" 
 
 
@@ -129,7 +107,7 @@ checkrepeat()
         qty=$(wc -w <<< "$repeatnum")
         num=${repeatnum/ */}
         echo "Warning: number $num appears in $qty file-names in the $2."
-        echo "Only one file with $num was compared with a (possibly wrong) file in the $3"
+        echo "Only one file with $num was compared with a (possibly wrong) file in the $3."
     fi
 }
 
@@ -139,6 +117,29 @@ makediff()
     NUMBER=$1
     file1="$(ls $2/$NUMBER"_"* 2>/dev/null | head -n 1)"
     file2="$(ls $3/$NUMBER"_"* 2>/dev/null | head -n 1)"
+
+# The html-tags to be pasted above the text:
+    html_intro="
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=\"utf8\">
+<style type=\"text/css\">
+pre {
+  font-family:Courier New;
+  font-size:12pt;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: -webkit-pre-wrap;
+  word-wrap: break-word;
+}
+</style>
+<title>$file2</title>
+</head>
+<body>
+<pre>"
 
     # Do nothing if a number is missing. and issue warning if appearing in one directory only:
     if ([[ -z "$file1" ]] || [[ -z "$file2" ]]); then
