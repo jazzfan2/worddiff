@@ -108,8 +108,12 @@ delete_start="<span style=\"font-weight:bold;color:#ff0000;\">"
 insert_start="<span style=\"font-weight:bold;color:#00ff00;\">"
 end="</span>"
 
+# Escape < and > in case literal html-tags appear in the text:
+regex="s/</\&lt;/g; s/>/\&gt;/g" 
+
 # De kleur-gemarkeerde difference-file maken:
-wdiff -w "$delete_start" -x "$end" -y "$insert_start" -z "$end" "$1" "$2" |
+wdiff -w "$delete_start" -x "$end" -y "$insert_start" -z "$end" \
+          <(sed "$regex" "$1") <(sed "$regex" "$2") |
 
 # En wegschrijven naar het gewenste formaat (default .html):
 cat <(echo "$html_intro") - <(echo "$html_coda") | store2file -
