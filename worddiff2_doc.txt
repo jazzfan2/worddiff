@@ -22,10 +22,10 @@ mag zijn).
 
 Het programma zal tekstbestanden in die in 'oud/' zijn opgeslagen vergelijken 
 met die in 'nieuw/' waarvan de naam met hetzelfde NUMMER begint, bijvoorbeeld:
-	oud/				-	nieuw/
-	1_voorwoord.txt		met	1_inleiding.txt
-	2_highlights.txt	met	2_highlights.txt
-	3_tips.txt			met	3_tips&tricks.txt
+	oud/				-		nieuw/
+	1_voorwoord.txt		met		1_inleiding.txt
+	2_highlights.txt	met		2_highlights.txt
+	3_tips.txt			met		3_tips&tricks.txt
 
 De rest van de namen kan dus verschillend zijn.
 
