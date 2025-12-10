@@ -1,15 +1,21 @@
 #!/bin/bash
-# Naam: worddiff.sh
-# Bron: Rob Toscani
-# Datum: 08-12-2025
-# Dit programma doet een woord-voor-woord vergelijking in kleur tussen de twee
-# opgegeven platte tekstbestanden.
-# Het is een wrapper-script rondom 'wdiff' (https://www.gnu.org/software/wdiff/),
-# met uitvoer naar html- of optioneel naar pdf-formaat.
+# Name: worddiff.sh
+# Author: Rob Toscani
+# Date: 08-12-2025
+# This program is a wrapper-script around 'wdiff()'
+# (https://www.gnu.org/software/wdiff/),
+# It does a word-by-word comparison in color between two given flat-text files,
+# The result is stored into a color-marked difference-file in .html format.
 #
-# Benodigde vooraf geïnstalleerde programma's:
+# Usage:     worddiff.sh  [OPTION]... FILE1 FILE2 
+#
+# Options:
+#   -h       Help (this output)
+#   -p       Output as .pdf- instead of .html-files
+#
+# Prerequisites:
 # - wdiff
-# - wkhtmltopdf (indien output naar pdf gewenst is)
+# - wkhtmltopdf (if output to pdf is desired)
 #
 #####################################################################################
 #
@@ -30,7 +36,7 @@
 #
 ######################################################################################
 
-# Standaard output-formaat:
+# Standard output-format:
 format="html"
 
 options(){
@@ -63,7 +69,7 @@ EOF
 }
 
 store2file()
-# Html-tekst wegschrijven naar (html-)file, of (in geval van optie -p) omzetten naar pdf-file:
+# Store html-text to (html-)file, or (if option -p is given) convert to pdf-file:
 {
     if [[ $format == "html" ]]; then
         cat "$1" >| out.html
@@ -73,7 +79,7 @@ store2file()
 }
 
 
-# Voer de opties uit:
+# Execute the options:
 options $@
 shift $(( OPTIND - 1 ))
 
@@ -111,9 +117,9 @@ end="</span>"
 # Escape < and > in case literal html-tags appear in the text:
 esc_html="s/</\&lt;/g; s/>/\&gt;/g" 
 
-# De kleur-gemarkeerde difference-file maken:
+# Generate the color-marked difference-file:
 wdiff -w "$delete_start" -x "$end" -y "$insert_start" -z "$end" \
           <(sed "$esc_html" "$1") <(sed "$esc_html" "$2") |
 
-# En wegschrijven naar het gewenste formaat (default .html):
+# And save results in desired format (default .html):
 cat <(echo "$html_intro") - <(echo "$html_coda") | store2file -
