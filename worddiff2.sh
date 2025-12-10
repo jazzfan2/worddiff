@@ -205,5 +205,5 @@ while (( NUMBER <= max )); do
     (( NUMBER += 1 ))
 done
 
-# Afsluiting:
+# Conclusion:
 echo "Ready! - Please find all difference-files in $(pwd)/diff/"
