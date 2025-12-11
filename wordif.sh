@@ -63,7 +63,7 @@ html_coda="
 </body>
 </html>"
 
-# Standard ouput-directory:
+# Standard output-directory:
 outputdir="./"
 
 # Standard output-format:
