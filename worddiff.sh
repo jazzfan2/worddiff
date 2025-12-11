@@ -19,8 +19,8 @@
 # Options:
 #   -h    Help (this output)
 #   -d    Specify two directories as arguments instead of two files;
-#         Compare all file-pairs of equally numbered name shared by
-#         both directories
+#         Compare each file in 1st directory to equally unique-numbered
+#         file in 2nd directory
 #   -p    Output as PDF- instead of HTML-files
 #
 # Prerequisites:
@@ -103,7 +103,7 @@ Usage:
 |
 |-h      Help (this output)
 |-d      Specify two directories as arguments instead of two files;
-|        Compare all file-pairs of equally numbered name shared by both directories
+|        Compare each file in 1st directory to equally unique-numbered file in 2nd directory
 |-p      Output as .pdf- instead of .html-files
 EOF
 }
