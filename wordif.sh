@@ -25,7 +25,7 @@
 #
 # Prerequisites:
 # - wdiff
-# - wkhtmltopdf (if output to pdf is desired)
+# - wkhtmltopdf (if output to PDF is desired)
 #
 #####################################################################################
 #
