@@ -104,7 +104,7 @@ Usage:
 |-h      Help (this output)
 |-d      Specify two directories as arguments instead of two files;
 |        Compare each file in 1st directory to equally unique-numbered file in 2nd directory
-|-p      Output as .pdf- instead of .html-files
+|-p      Output as PDF- instead of HTML-files
 EOF
 }
 
