@@ -47,7 +47,7 @@
 ######################################################################################
 
 # Standard arguments:
-args="file"
+args="files"
 
 # The color markings:
 delete_start="<span style=\"font-weight:bold;color:#ff0000;\">"
@@ -77,7 +77,7 @@ options(){
 # Specify options:
     while getopts "dhp" OPTION; do
         case $OPTION in
-            d) args="dir"
+            d) args="directories"
                ;;
             h) helptext
                exit 0
@@ -143,15 +143,15 @@ flat_text()
 
 
 makediff()
-# Perform the comparison (default one single pair of text files), and store the output as desired:
+# Perform text comparison between two text files, and store the output in desired format:
 {
     NUMBER="$3"
-    # If option = -d, compare all numbered text files in 1st directory with those in 2nd directory,
-    if  [[ $args == "dir" ]]; then
+    if  [[ $args == "directories" ]]; then
+        # If option = -d (directories), derive both file names from given directories and <NUMBER>:
         file1="$(ls $1/$NUMBER"_"* 2>/dev/null | head -n 1)"
         file2="$(ls $2/$NUMBER"_"* 2>/dev/null | head -n 1)"
 
-        # Do nothing if a number is missing. and issue warning if appearing in one directory only:
+        # Do nothing if a <NUMBER> is missing. and issue warning if it misses in one directory only:
         if ([[ -z "$file1" ]] || [[ -z "$file2" ]]); then
             if [[ -n "$file1" ]]; then
                 echo "WARNING: Number $NUMBER appears in 1st directory only, not in 2nd directory."
@@ -161,12 +161,12 @@ makediff()
             return
         fi
     else
-        # In case of files instead of directories:
+        # In case of files instead of directories as arguments, verify if that's really the case:
         if [[ -f "$1" ]] && [[ -f "$2" ]]; then
             file1="$1"
             file2="$2"
         else
-            echo "ERROR: Specify files instead of directories"
+            echo "ERROR: Specify existing files, and do not specify directories"
             return
         fi
     fi
@@ -194,6 +194,7 @@ pre {
 <body>
 <pre>"
 
+    # If both files are indeed flat text, compare them to each other:
     if flat_text "$file1" "$file2"; then
         # Generate the color-marked difference-file:
         wdiff -w "$delete_start" -x "$end" -y "$insert_start" -z "$end" \
@@ -224,7 +225,7 @@ store2file()
 options $@
 shift $(( OPTIND - 1 ))
 
-if [[ $args == "dir" ]]; then
+if [[ $args == "directories" ]]; then
 
     # Check if given directories exist:
     ([[ ! -d "$1" ]] || [[ ! -d "$2" ]]) && echo "Specify existing directories." && exit 1
@@ -233,11 +234,11 @@ if [[ $args == "dir" ]]; then
     [[ ! -d ./diff ]] && mkdir ./diff
     outputdir="./diff"
 
-    # Create a list with all <NUMBER> values for each if the two directories:
+    # Create a list with all <NUMBER> values for each of the two directories:
     list1="$(numberlist "$1")"
     list2="$(numberlist "$2")"
 
-    # Check if de <NUMBER>-lists contain repetitions, and if so issue a warning:
+    # Check if the <NUMBER>-lists contain any repetitions, and if so issue a warning:
     checkrepeat "$list1" "1st directory" "2nd directory"
     checkrepeat "$list2" "2nd directory" "1st directory"
 
@@ -246,7 +247,7 @@ if [[ $args == "dir" ]]; then
     max2=${list2/* /}
     (( max1 > max2 )) && max=$max1 || max=$max2
 
-    # While incrementing to max <NUMBER> value, call makediff() function with value argument:
+    # While incrementing from 0 to max value, call makediff() function with <NUMBER> argument:
     NUMBER=0
     while (( NUMBER <= max )); do
         makediff "$1" "$2" $NUMBER
@@ -257,6 +258,6 @@ if [[ $args == "dir" ]]; then
     echo "READY! - Please find all results in $(pwd)/diff/"
 
 else
-    # In case of files instead of directories:
+    # In case of files instead of directories as arguments:
     makediff "$1" "$2"
 fi
