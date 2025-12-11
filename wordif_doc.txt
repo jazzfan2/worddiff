@@ -41,7 +41,7 @@ Let op:
 Om het programma te starten, typ in een terminal het volgende commando in,
 en druk daarna op <ENTER>: [code]
 
-	worddiff.sh  -d  oud  nieuw
+	wordif.sh  -d  oud  nieuw
 
 [/code]
 De optie '-d' impliceert dat er - zoals hierboven - twee mappen worden opgegegeven
@@ -78,7 +78,7 @@ In elk van de resulterende .html-bestanden in de map 'diff/' is:
 Vanuit elk van deze html-bestanden kan b.v. geprint worden naar PDF.
 Verder zijn er nog de volgende mogelijkheden:
 
-* Indien tussen 'worddiff.sh' en 'oud' ook nog de optie '-p' wordt opgegeven, dan
+* Indien tussen 'wordif.sh' en 'oud' ook nog de optie '-p' wordt opgegeven, dan
   worden de verschilbestanden direct naar PDF in plaats van naar HTML weggeschreven.
 
 * Indien optie '-d' wordt weggelaten, dan moeten er twee tekstbestanden worden

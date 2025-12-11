@@ -1,5 +1,5 @@
 #!/bin/bash
-# Name: worddiff.sh
+# Name: wordif.sh
 # Author: Rob Toscani
 # Date: 8th December 2025
 # Description: This program is a wrapper-script around 'wdiff()'
@@ -14,8 +14,8 @@
 # The results are stored as color-marked difference-files in HTML-,
 # or (optionally) PDF-format.
 #
-# Usage:  worddiff.sh   [-p]  FILE1       FILE2
-#         worddiff.sh -d[-p]  DIRECTORY1  DIRECTORY2
+# Usage:  wordif.sh   [-p]  FILE1       FILE2
+#         wordif.sh -d[-p]  DIRECTORY1  DIRECTORY2
 # Options:
 #   -h    Help (this output)
 #   -d    Specify two directories as arguments instead of two files;
@@ -31,12 +31,12 @@
 #
 # Copyright (C) 2025 Rob Toscani <rob_toscani@yahoo.com>
 #
-# worddiff.sh is free software: you can redistribute it and/or modify
+# wordif.sh is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# worddiff.sh is distributed in the hope that it will be useful,
+# wordif.sh is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
@@ -98,8 +98,8 @@ helptext()
         echo "$line" >&2         # print to standard error (stderr)
     done << EOF
 Usage: 
-|        worddiff.sh [-p]   FILE1       FILE2
-|        worddiff.sh -d[p]  DIRECTORY1  DIRECTORY2
+|        wordif.sh [-p]   FILE1       FILE2
+|        wordif.sh -d[p]  DIRECTORY1  DIRECTORY2
 |
 |-h      Help (this output)
 |-d      Specify two directories as arguments instead of two files;
