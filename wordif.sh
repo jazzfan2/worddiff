@@ -141,7 +141,6 @@ flat_text()
     return 0
 }
 
-
 makediff()
 # Perform text comparison between two text files, and store the output in desired format:
 {
@@ -171,7 +170,7 @@ makediff()
         fi
     fi
 
-# The HTML-tags to be pasted above the text:
+    # The HTML-tags to be pasted above the text:
     html_intro="
 <!DOCTYPE html>
 <html>
