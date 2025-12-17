@@ -4,7 +4,7 @@
 # Date: 8th December 2025
 # Description: This program is a wrapper-script around 'wdiff()'
 # (https://www.gnu.org/software/wdiff/), performing word-by-word
-# comparison between two flat-text files.
+# comparison between two flat-text-files.
 #
 # It does either:
 # a. one single comparison between given two text-files, or
@@ -166,7 +166,7 @@ makediff()
             file2="$2"
         else
             echo "ERROR: Specify existing files, and do not specify directories"
-            return
+            return 1
         fi
     fi
 
