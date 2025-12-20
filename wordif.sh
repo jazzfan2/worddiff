@@ -196,8 +196,11 @@ pre {
     # If both files are indeed plain text, compare them to each other:
     if is_plain_text "$file1" "$file2"; then
         # Generate the color-marked difference-file:
-        wdiff -w "$delete_start" -x "$end" -y "$insert_start" -z "$end" \
-                  <(sed "$esc_html" "$file1") <(sed "$esc_html" "$file2") |
+#       wdiff -w "$delete_start" -x "$end" -y "$insert_start" -z "$end" \
+#                 <(sed "$esc_html" "$file1") <(sed "$esc_html" "$file2") |
+
+        wdiffer.py -w "$delete_start" -x "$end" -y "$insert_start" -z "$end" \
+                       <(sed "$esc_html" "$file1") <(sed "$esc_html" "$file2") |
 
         # And save results in desired format (default HTML):
         cat <(echo "$html_intro") - <(echo "$html_coda") | store2file - $NUMBER
