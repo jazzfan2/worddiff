@@ -4,6 +4,7 @@
 # Date: 19-12-2025
 # Description: Private version of wdiff() as a Python3 script.
 # Alternative for the standard UNIX wdiff() utility.
+# It displays word differences between two plain text files.
 #
 #     Usage: wdiffer.py [OPTIONS] textfile1 textfile2
 #
