@@ -1,6 +1,7 @@
 # Name: wordif.sh
 wordif.sh  - compares plain-text-files word-by-word, and stores color-marked results in HTML-format.
 
+# Name: wdiffer.py
 wdiffer.py - private version of wdiff() as a Python3 script, mimicking the UNIX wdiff() utility.
 
 # Description:
