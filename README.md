@@ -27,7 +27,7 @@ wdiffer.py is a private version of wdiff() that is run as a Python3 script, mimi
 It can be called by wordif.sh as an alternative for wdiff() in case the latter is not available for installation.
 
 Developed as a fun project in order to achieve a 'self-supporting' version of wordif.sh.
-An equivalent of wdiffer.py in AWK is in the making as well.
+An AWK equivalent of wdiffer.py is in the making as well.
 
 Options to wdiffer.py are limited to -h, -w, -x, -y and -z as of now.
 
