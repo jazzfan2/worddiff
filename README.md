@@ -23,11 +23,11 @@ The resulting difference-files are collected in a difference-directory.
 To correctly associate two files in either directory to each other, their respective file names must
 start with same unique number, followed by an underscore.
 
-wdiffer.py is a private version of wdiff() that is run as Python3 script, mimicking the UNIX wdiff() utility.
+wdiffer.py is a private version of wdiff() that is run as a Python3 script, mimicking the UNIX wdiff() utility.
 It can be called by wordif.sh as an alternative for wdiff() in case the latter is not available for installation.
 
-Developed for fun as a personal project in order to achieve a 'self-supporting' version of wordif.sh.
-A version in AWK is in the makings as well.
+Developed as a fun project in order to achieve a 'self-supporting' version of wordif.sh.
+An equivalent of wdiffer.py in AWK is in the making as well.
 
 Options to wdiffer.py are limited to -h, -w, -x, -y and -z as of now.
 
