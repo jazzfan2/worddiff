@@ -11,7 +11,7 @@
 # Following options are available: -h, -w, -x, -y and -z (see man wdiff)
 # pypy can be used to further enhance speed.
 #
-# This program is based on the Longest Common Subsequence (LCS) algorithm
+# This program is based on the 'Longest Common Subsequence' (LCS) algorithm
 # as laid out in:
 # https://en.wikipedia.org/wiki/Longest_common_subsequence
 #
@@ -151,11 +151,11 @@ def printDiff(M, words1, words2):
 
 # Store file1 into words list:
 with open(file1) as f:
-    words1 = [ " " ] + [ word for line in f for word in line.split()+["\n"]]
+    words1 = [ "" ] + [ word for line in f for word in line.split()+["\n"]]
 
 # Store file2 into words list:
 with open(file2) as f:
-    words2 = [ " " ] + [ word for line in f for word in line.split()+["\n"]]
+    words2 = [ "" ] + [ word for line in f for word in line.split()+["\n"]]
 
 # Initialize LCS-Matrix:
 M = [ [ y for y in range(0,len(words2))] for x in range(0,len(words1)) ]
@@ -169,7 +169,7 @@ words3 = list(reversed(words3))
 
 # Send diff-words list to stdout as a text stream:
 for word in words3:
-    if word != "\n":
+    if not (word == "\n" or word == "" or word == "\r" or word == "\r\n"):
         print(word, end=' ')
     else:
         print()
