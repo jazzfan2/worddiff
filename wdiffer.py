@@ -100,8 +100,8 @@ if len(non_option_args) < 2:
 file1 = non_option_args[0]
 file2 = non_option_args[1]
 
-# Initialize LCS-Matrix:
-def initializeMatrix(words1, words2):
+# Populate the LCS-Matrix:
+def populateMatrix(words1, words2):
     m=len(words1)-1
     n=len(words2)-1
     for i in range(0, m+1):
@@ -157,9 +157,11 @@ with open(file1) as f:
 with open(file2) as f:
     words2 = [ "" ] + [ word for line in f for word in line.split()+["\n"]]
 
-# Initialize LCS-Matrix:
+# Initialize the LCS-Matrix:
 M = [ [ y for y in range(0,len(words2))] for x in range(0,len(words1)) ]
-initializeMatrix(words1, words2)
+
+# Populate the LCS-Matrix:
+populateMatrix(words1, words2)
 
 # Execute the LCS algorithm:
 printDiff(M, words1, words2)
