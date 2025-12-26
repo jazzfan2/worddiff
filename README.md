@@ -29,7 +29,7 @@ start with same unique number, followed by an underscore.
 'wdiffer.py' is a private version of wdiff() that is run as a Python3 script, mimicking the UNIX wdiff() utility.
 It can be called by wordif.sh as an alternative for wdiff() in case the latter is not available for installation.
 
-'wdiffer.sh' is a Bash/GAWK equivalent of the same program.
+'wdiffer.sh' is a Bash/GAWK equivalent of 'wdiffer.py'.
 
 Both have been developed as a fun project, in an effort to achieve a 'self-supporting' version of wordif.sh.
 A wdiffer-version in C is being considered as well.
