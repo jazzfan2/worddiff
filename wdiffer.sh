@@ -160,8 +160,6 @@ wdiff_function()
             }
         }
 
-#       printf "\n\n\n\n"
-
         for (i = k-1; i > 0; i--){
             if (! (words3[i] == "\n" || words3[i] == ""))
                 printf words3[i]" "
