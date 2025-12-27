@@ -15,7 +15,8 @@
 # https://en.wikipedia.org/wiki/Longest_common_subsequence
 #
 # LeChat Mistral (AI) has been used to convert the *recursive* printDiff() function
-# from above source into the similarly named *iterative* version used below.
+# from above source into the *iterative* code of the 'while (pointer >= 0)' loop in
+# below 'wdiff_function()'.
 #
 # Version with 'true 2d-arrays' for the LCS-matrix 'M' and the stack.
 # Prerequisite:
@@ -230,4 +231,5 @@ file_2="$2"
 
 separator="$(make_separator)"
 
+# Call wdiff_function with both files combined in one including separator line:
 (cat "$file_1"; echo -e "\n$separator"; cat "$file_2") | wdiff_function -
