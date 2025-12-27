@@ -231,5 +231,5 @@ file_2="$2"
 
 separator="$(make_separator)"
 
-# Call wdiff_function with both files combined in one including separator line:
+# Call wdiff_function with both files combined into one including separator line:
 (cat "$file_1"; echo -e "\n$separator"; cat "$file_2") | wdiff_function -
