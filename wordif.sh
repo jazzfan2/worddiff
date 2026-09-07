@@ -264,7 +264,7 @@ unbreak_words()
     }
     {
         if (prev ~ "[^	\b\n ](-|\xc2\xad|\xe2\x80\x86|\xe2\x80\x89|\xe2\x80\x8a|\xe2\x80\x8b|\xe2\x80\x8c)$" &&
-            $0 ~ "\b" && reunite == "true"){
+            $0 ~ "\b." && reunite == "true"){
             sub(/.$/, "", prev)
             sub(/\b/, "", $0)
             prev = prev""$0
