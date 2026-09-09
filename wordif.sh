@@ -390,8 +390,8 @@ makediff()
 # Perform text comparison between two text files, and generate color-marked difference-file:
 {
     # Preprocessing steps:
-    sed "$esc_html" "$1" | splitwords - | unbreak_words - | cut_invisible - ->| "$tempdir"/file1_temp.txt
-    sed "$esc_html" "$2" | splitwords - | unbreak_words - | cut_invisible - ->| "$tempdir"/file2_temp.txt
+    sed "$esc_html" "$1" | splitwords - | unbreak_words - | cut_invisible - >| "$tempdir"/file1_temp.txt
+    sed "$esc_html" "$2" | splitwords - | unbreak_words - | cut_invisible - >| "$tempdir"/file2_temp.txt
 
     # Force diff -U to also output in case of no difference:
     printf %s\\n " $tempstring" >> "$tempdir"/file2_temp.txt
